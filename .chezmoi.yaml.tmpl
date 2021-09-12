@@ -1,8 +1,8 @@
 {{- $personal := false -}}{{/* true if this machine should have personal secrets from BitWarden */}}
-{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $headless := true -}}{{/* true if this machine does not have a screen and keyboard */}}
 {{- $transient := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
-{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
-{{- $city := "Albany, NY" -}}{{/* city inputs for weather */}}
+{{- $kubernetes := true -}}{{/* true if this machine is used for Kubernetes work */}}
+{{- $city := "Hayward, CA" -}}{{/* city inputs for weather */}}
 
 {{- $personal = promptBool "personal" -}}
 {{- $headless = promptBool "headless" -}}
@@ -14,7 +14,7 @@
 {{- end -}}
 
 format: yaml
-sourceDir: {{ .chezmoi.homeDir }}/Code/repos/onedr0p/dotfiles
+sourceDir: {{ .chezmoi.homeDir }}/GitProjects/dotfiles
 
 data:
   {{- if (contains "termux" .chezmoi.homeDir) }} 
